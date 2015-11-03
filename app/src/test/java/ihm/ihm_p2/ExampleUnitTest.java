@@ -1,4 +1,4 @@
-package ihm.practica2;
+package ihm.ihm_p2;
 
 import org.junit.Test;
 
