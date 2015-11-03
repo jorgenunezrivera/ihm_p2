@@ -22,6 +22,7 @@ public class MainActivity extends ListActivity {
         Intent intent = new Intent(this, Activity_infopueblo.class);
         intent.putExtra("npueblo", (String) l.getItemAtPosition(position));
         System.out.println(l.getItemAtPosition(position));
+        startActivity(intent);
 
 
     }
