@@ -21,8 +21,7 @@ public class MainActivity extends ListActivity {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(this, Activity_infopueblo.class);
         intent.putExtra("npueblo", (String) l.getItemAtPosition(position));
-        system.out.println(l.getItemAtPosition(position));
-
+        System.out.println(l.getItemAtPosition(position));
 
 
     }
