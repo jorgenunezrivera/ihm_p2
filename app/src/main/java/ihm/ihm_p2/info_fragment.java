@@ -22,6 +22,7 @@ public class info_fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "name";
+    private TextView textview ;
 
     // TODO: Rename and change types of parameters
     private String nombre;
@@ -53,7 +54,8 @@ public class info_fragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             nombre = getArguments().getString(ARG_PARAM1);
-            texto = "Concello de " + nombre;
+
+
             // Set the text view as the activity layout
 
         }
@@ -69,10 +71,15 @@ public class info_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        TextView textView = new TextView(getActivity());
-        textView.setTextSize(40);
-        textView.setText(texto);
-        return textView;
+        textview = new TextView(getActivity());
+        textview.setTextSize(40);
+        textview.setText(texto);
+        return textview;
+    }
+
+    public void setText(String text)
+    {
+        textview.setText(text);
     }
 
     /*

@@ -2,7 +2,19 @@ package ihm.ihm_p2;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends Activity implements OnFragmentInteractionListener{
@@ -30,7 +42,7 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
         Bundle args = new Bundle();
         args.putString("name",nombre);
         infopueblo.setArguments(args);
-
+        new modelo().execute(nombre);
         if(tablet){
 
             info_fragment info_frag = (info_fragment)getFragmentManager().findFragmentById(R.id.layout_info_tablet);
@@ -51,6 +63,115 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
 
         }
 
+    private class modelo extends AsyncTask<String,String,String> {
+
+        public modelo(){
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String id = get_places(params[0]);
+            return get_weather(id);
+        }
+
+        protected void onPostExecute(String result) {
+            TextView textview;
+            if(tablet){
+                textview= (TextView) getFragmentManager().findFragmentById(R.id.layout_info_tablet).getView();
+            }
+            else{
+                textview = (TextView) getFragmentManager().findFragmentById(R.id.frag_layout_phone).getView();
+            }
+
+            textview.setText(result);
+        }
+
+        protected String format_info(JSONObject day) throws org.json.JSONException{
+            String sky,temperature,rain,wind_module,wind_dir;
+            String output;
+            sky=day.getJSONArray("variables").getJSONObject(0).getJSONArray("values").getJSONObject(0).getString("value");
+            System.out.println(sky);
+            temperature=day.getJSONArray("variables").getJSONObject(1).getJSONArray("values").getJSONObject(0).getString("value");
+            rain=day.getJSONArray("variables").getJSONObject(2).getJSONArray("values").getJSONObject(0).getString("value");
+            wind_module=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("moduleValue");
+            wind_dir=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("directionValue");
+            output = "Sky state: "+ sky + "\nTemperature="+temperature + "º\nRain="+rain+"mm\nwind speed="+wind_module + " km/h\nWind direction="+ wind_dir+ "º";
+            return output;
+        }
+
+
+        public String get_places(String nombre) {
+            String apiurl = "http://servizos.meteogalicia.es/apiv3/";
+            String apikey = "API_KEY=d29W0ZS4E1YZx6mY4pPAHF5T7kHns695nqX8sflMt1H4XhFq3AWU0v4gWZlZJ8Ov";
+            String nombreurl = nombre.replace(" ","%20");
+            JSONObject places_array;
+            String id="";
+            String address=""+apiurl+"findPlaces?location="+nombreurl+"&"+apikey;
+            System.out.println(address);
+            System.out.println(apiurl);
+            try {
+                places_array = JsonReader.readJsonFromUrl(address);
+            }catch (IOException ioe){
+                return "Error de conexion";
+            }catch (JSONException je){
+                return "Error al procesar los datos recividos";
+            }
+            try {
+                System.out.println(places_array.toString());
+                JSONArray pueblos = places_array.getJSONArray("features");
+                //Cuando solo hay un pueblo se utiliza ese. Esto evita fallos para nombres compuestos como a guarda y poboa do caramiñal.
+                //Cuando hay varios busca aquel cuyo municipio coincida con la búsqueda
+                if(pueblos.length()>1) {
+                    for (int i = 0; i < pueblos.length(); i++) {
+                        System.out.println(pueblos.getJSONObject(i).getJSONObject("properties").getString("municipality") + " ..." + nombre);
+
+                        if (pueblos.getJSONObject(i).getJSONObject("properties").getString("municipality").equalsIgnoreCase(nombre)) {
+                            id = pueblos.getJSONObject(i).getJSONObject("properties").getString("id");
+
+                        }
+                    }
+                }
+                else{
+                    id = pueblos.getJSONObject(0).getJSONObject("properties").getString("id");
+                }
+            }catch(Exception e) {
+                return "Pueblo no encontrado";
+            }
+            return id;
+        }
+
+        public String get_weather(String id){
+            String apiurl = "http://servizos.meteogalicia.es/apiv3/";
+            String apikey = "API_KEY=d29W0ZS4E1YZx6mY4pPAHF5T7kHns695nqX8sflMt1H4XhFq3AWU0v4gWZlZJ8Ov";
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+            Date date = new Date();
+            Date date2 = new Date(date.getTime()+3600000);
+            String timestring = "startTime="+ format.format(date) + "&endTime="  +format.format(date2);
+            String info;
+            JSONObject day;
+            JSONObject weather_array;
+            String address=""+apiurl+"getNumericForecastInfo?locationIds="+id+"&" + timestring + "&"+apikey;
+            System.out.println(address);
+            System.out.println(apiurl);
+            try {
+               weather_array = JsonReader.readJsonFromUrl(address);
+            }catch (IOException ioe){
+                return "Error de conexion";
+            }catch (JSONException je){
+                return "Error al procesar los datos recibidos";
+            }
+            try {
+                System.out.println(weather_array.toString());
+                day = weather_array.getJSONArray("features").getJSONObject(0).getJSONObject("properties").getJSONArray("days").getJSONObject(0);
+                System.out.println(day.toString());
+                info=format_info(day);
+            }catch(Exception e) {
+                return "No se ha encontrado información meteorologica: "+e.toString();
+            }
+            return info;
+        }
+    }
 
         //cambio de layout∫
     }
