@@ -1,6 +1,7 @@
 package ihm.ihm_p2;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -72,7 +73,9 @@ public class info_fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         textview = new TextView(getActivity());
-        textview.setTextSize(40);
+        textview.setPadding(16,16,16,16);
+        textview.setTextSize(14);
+        textview.setLineSpacing(72,0);
         textview.setText(texto);
         return textview;
     }

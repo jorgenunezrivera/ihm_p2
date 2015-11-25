@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">ihm_p2</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA PIZZA</string>
-    <string name = "apiurl">http://servizos.meteogalicia.es/apiv3/</string>
-    <string name = "apikey">API_KEY=d29W0ZS4E1YZx6mY4pPAHF5T7kHns695nqX8sflMt1H4XhFq3AWU0v4gWZlZJ8Ov</string>
+    <string name = "apiurl" translatable="false">http://servizos.meteogalicia.es/apiv3/</string>
+    <string name = "apikey" translatable="false">API_KEY=d29W0ZS4E1YZx6mY4pPAHF5T7kHns695nqX8sflMt1H4XhFq3AWU0v4gWZlZJ8Ov</string>
+    <string name = "choose_town">Elije un pueblo</string>
+    <string name = "sky_state">Cielo </string>
+    <string name = "temperature">Temperatura</string>
+    <string name = "rain">Precipitaciones</string>
+    <string name = "wind_speed">Velocidad del viento</string>
+    <string name = "wind_direction">Dirección del viento</string>
+
+    <string name= "connection_error">Error de conexión</string>
+    <string name= "Json_error">Error de JSon</string>
+
+
+
+    <string name = "CLOUDY" >Nublado</string>
+
 </resources>

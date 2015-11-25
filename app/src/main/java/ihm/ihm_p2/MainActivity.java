@@ -59,6 +59,8 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                 transaction.replace(R.id.frag_layout_phone, infopueblo);
                 transaction.addToBackStack(null);
                 transaction.commit();
+                TextView tv = (TextView) findViewById(R.id.toolbar_text);
+                tv.setText(nombre);
             }
 
         }
@@ -71,11 +73,20 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
 
         @Override
         protected String doInBackground(String... params) {
-            String id = get_places(params[0]);
+            String id;
+                try {
+                    id = get_places(params[0]);
+                }catch (Exception e){
+                    return(e.getLocalizedMessage());
+                }
             return get_weather(id);
         }
 
         protected void onPostExecute(String result) {
+                    updateInfotext(result);
+                    }
+
+        protected void updateInfotext(String newtext){
             TextView textview;
             if(tablet){
                 textview= (TextView) getFragmentManager().findFragmentById(R.id.layout_info_tablet).getView();
@@ -84,7 +95,8 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                 textview = (TextView) getFragmentManager().findFragmentById(R.id.frag_layout_phone).getView();
             }
 
-            textview.setText(result);
+            textview.setText(newtext);
+
         }
 
         protected String format_info(JSONObject day) throws org.json.JSONException{
@@ -96,12 +108,12 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
             rain=day.getJSONArray("variables").getJSONObject(2).getJSONArray("values").getJSONObject(0).getString("value");
             wind_module=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("moduleValue");
             wind_dir=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("directionValue");
-            output = "Sky state: "+ sky + "\nTemperature="+temperature + "º\nRain="+rain+"mm\nwind speed="+wind_module + " km/h\nWind direction="+ wind_dir+ "º";
+            output = getResources().getString(R.string.sky_state) + ": "+ sky + "\n"+R.string.temperature+ "="+temperature + "º\n"+R.string.rain+"="+rain+"mm\n"+R.string.wind_speed+"="+wind_module + " km/h\n"+R.string.wind_direction+"="+ wind_dir+ "º";
             return output;
         }
 
 
-        public String get_places(String nombre) {
+        public String get_places(String nombre) throws Exception {
             String apiurl = "http://servizos.meteogalicia.es/apiv3/";
             String apikey = "API_KEY=d29W0ZS4E1YZx6mY4pPAHF5T7kHns695nqX8sflMt1H4XhFq3AWU0v4gWZlZJ8Ov";
             String nombreurl = nombre.replace(" ","%20");
@@ -113,9 +125,9 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
             try {
                 places_array = JsonReader.readJsonFromUrl(address);
             }catch (IOException ioe){
-                return "Error de conexion";
+                throw new Exception(getResources().getString(R.string.connection_error));
             }catch (JSONException je){
-                return "Error al procesar los datos recividos";
+                throw new Exception(getResources().getString(R.string.Json_error));
             }
             try {
                 System.out.println(places_array.toString());
@@ -136,7 +148,7 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                     id = pueblos.getJSONObject(0).getJSONObject("properties").getString("id");
                 }
             }catch(Exception e) {
-                return "Pueblo no encontrado";
+                throw new Exception(getResources().getString(R.string.Json_error));
             }
             return id;
         }
@@ -157,9 +169,9 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
             try {
                weather_array = JsonReader.readJsonFromUrl(address);
             }catch (IOException ioe){
-                return "Error de conexion";
+                return getResources().getString(R.string.connection_error);
             }catch (JSONException je){
-                return "Error al procesar los datos recibidos";
+                return getResources().getString(R.string.Json_error);
             }
             try {
                 System.out.println(weather_array.toString());
@@ -167,7 +179,7 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                 System.out.println(day.toString());
                 info=format_info(day);
             }catch(Exception e) {
-                return "No se ha encontrado información meteorologica: "+e.toString();
+                return getResources().getString(R.string.Json_error);
             }
             return info;
         }

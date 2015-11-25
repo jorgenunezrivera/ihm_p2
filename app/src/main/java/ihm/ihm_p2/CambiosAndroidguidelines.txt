@@ -1,0 +1,5 @@
+Cambiar la fuente de los resultados a tamaño 14
+Poner barra de menu en ambos layouts
+Cambiar los márgenes en el movil a 16 y en la tablet a 24
+Hacer que la barra de herramientas muestr el nombre del pueblo seleccionado en el movil
+Cambiar espaciado del resultado
