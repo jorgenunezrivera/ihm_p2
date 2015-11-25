@@ -10,4 +10,24 @@
     <string name="temperature">Temperatura</string>
     <string name="wind_direction">Dirección del viento</string>
     <string name="wind_speed">Velocidad del viento</string>
+    <string name="DRIZZLE">Llovizna</string>
+    <string name="FOG">Niebla</string>
+    <string name="FOG_BANK">Bancos de niebla</string>
+    <string name="HIGH_CLOUDS">Nubes altas</string>
+    <string name="INTERMITENT_SNOW">Nieve intermitente</string>
+    <string name="MELTED_SNOW">Aguanieve</string>
+    <string name="MID_CLOUDS">Nubes medias</string>
+    <string name="MIST">Bruma</string>
+    <string name="OVERCAST">Cubierto</string>
+    <string name="OVERCAST_AND_SHOWERS">Cubierto y chaparrones</string>
+    <string name="PARTLY_CLOUDY">Parcialmente nublado</string>
+    <string name="RAIN">Lluvia</string>
+    <string name="RAIN_HAIL">Granizo</string>
+    <string name="SHOWERS">Chuvascos</string>
+    <string name="SNOW">Nieve</string>
+    <string name="STORMS">Tormenta</string>
+    <string name="STORM_THEN_CLOUDY">Tormenta y nubes</string>
+    <string name="SUNNY">Soleado</string>
+    <string name="WEAK_RAIN">Lluvia suave</string>
+    <string name="WEAK_SHOWERS">Chuvascos debiles</string>
 </resources>

@@ -10,4 +10,24 @@
     <string name="temperature">temperature</string>
     <string name="wind_direction">wind direction</string>
     <string name="wind_speed">wind speed</string>
+    <string name="DRIZZLE">Drizzle</string>
+    <string name="FOG">Fog</string>
+    <string name="FOG_BANK">Fog banks</string>
+    <string name="HIGH_CLOUDS">High clouds</string>
+    <string name="INTERMITENT_SNOW">Intermitent snow</string>
+    <string name="MELTED_SNOW">Melted snow</string>
+    <string name="MID_CLOUDS">Mid clouds</string>
+    <string name="MIST">Mist</string>
+    <string name="OVERCAST_AND_SHOWERS">Overcast and shower</string>
+    <string name="OVERCAST">Overcast</string>
+    <string name="PARTLY_CLOUDY">Parcialy cloudy</string>
+    <string name="RAIN_HAIL">Rain hail</string>
+    <string name="RAIN">Rain</string>
+    <string name="SHOWERS">Showers</string>
+    <string name="SNOW">Snow</string>
+    <string name="STORMS">Storm</string>
+    <string name="STORM_THEN_CLOUDY">Storm then cloudy</string>
+    <string name="SUNNY">Sunny</string>
+    <string name="WEAK_RAIN">Weak rain</string>
+    <string name="WEAK_SHOWERS">Weak showers</string>
 </resources>

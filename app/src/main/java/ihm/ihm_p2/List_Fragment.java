@@ -107,7 +107,7 @@ public class List_Fragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        getListView().setItemChecked(position, true);
+        l.setItemChecked(position, true);
         mListener.onFragmentInteraction((String) l.getItemAtPosition(position));
         //Intent intent = new Intent(this, Activity_infopueblo.class);
         //intent.putExtra("npueblo", (String) l.getItemAtPosition(position));

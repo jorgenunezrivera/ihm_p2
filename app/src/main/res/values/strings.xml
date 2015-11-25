@@ -14,7 +14,26 @@
     <string name= "Json_error">Error de JSon</string>
 
 
-
-    <string name = "CLOUDY" >Nublado</string>
+    <string name = "SUNNY">Soleado</string>
+    <string name = "HIGH_CLOUDS">Nubes altas</string>
+    <string name = "PARTLY_CLOUDY">Parcialmente nublado</string>
+    <string name = "OVERCAST">Cubierto</string>
+    <string name = "CLOUDY">Nuboso</string>
+    <string name = "FOG">Niebla</string>
+    <string name = "SHOWERS">Chubascos</string>
+    <string name = "OVERCAST_AND_SHOWERS">Cubierto y chaparrones</string>
+    <string name = "INTERMITENT_SNOW">Nieve intermitente</string>
+    <string name = "DRIZZLE">Llovizna</string>
+    <string name = "RAIN">Lluvia</string>
+    <string name = "SNOW">Nieve</string>
+    <string name = "STORMS">Tormenta</string>
+    <string name = "MIST">Bruma</string>
+    <string name = "FOG_BANK">Bancos de niebla</string>
+    <string name = "MID_CLOUDS">Nubes medias</string>
+    <string name = "WEAK_RAIN">Lluvia suave</string>
+    <string name = "WEAK_SHOWERS">Chuvascos leves</string>
+    <string name = "STORM_THEN_CLOUDY">Tormenta y luego nublado</string>
+    <string name = "MELTED_SNOW">Aguanieve</string>
+    <string name = "RAIN_HAIL">Granizo</string>
 
 </resources>

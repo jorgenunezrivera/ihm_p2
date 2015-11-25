@@ -52,6 +52,9 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
                 transaction.replace(R.id.layout_info_tablet, infopueblo);
                 transaction.addToBackStack(null);
                 transaction.commit();
+                TextView tv = (TextView) findViewById(R.id.info_toolbar_tablet);
+                tv.setText(nombre);
+
             }
         }
         else{
@@ -100,15 +103,17 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
         }
 
         protected String format_info(JSONObject day) throws org.json.JSONException{
-            String sky,temperature,rain,wind_module,wind_dir;
+            String sky,skytext,temperature,rain,wind_module,wind_dir;
+            int skyid;
             String output;
             sky=day.getJSONArray("variables").getJSONObject(0).getJSONArray("values").getJSONObject(0).getString("value");
-            System.out.println(sky);
+            skyid=getResources().getIdentifier(sky, "string", MainActivity.this.getPackageName());
+            skytext=getResources().getString(skyid);
             temperature=day.getJSONArray("variables").getJSONObject(1).getJSONArray("values").getJSONObject(0).getString("value");
             rain=day.getJSONArray("variables").getJSONObject(2).getJSONArray("values").getJSONObject(0).getString("value");
             wind_module=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("moduleValue");
             wind_dir=day.getJSONArray("variables").getJSONObject(3).getJSONArray("values").getJSONObject(0).getString("directionValue");
-            output = getResources().getString(R.string.sky_state) + ": "+ sky + "\n"+R.string.temperature+ "="+temperature + "º\n"+R.string.rain+"="+rain+"mm\n"+R.string.wind_speed+"="+wind_module + " km/h\n"+R.string.wind_direction+"="+ wind_dir+ "º";
+            output = getResources().getString(R.string.sky_state) + ": "+ skytext + "\n"+getResources().getString(R.string.temperature)+ "="+temperature + "º\n"+getResources().getString(R.string.rain)+"="+rain+" lm2\n"+getResources().getString(R.string.wind_speed)+"="+wind_module + " km/h\n"+getResources().getString(R.string.wind_direction)+"="+ wind_dir+ "º";
             return output;
         }
 
