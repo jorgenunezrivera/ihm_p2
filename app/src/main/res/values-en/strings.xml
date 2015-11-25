@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ihm_p2</string>
+    <string name="CLOUDY">Cloudy</string>
+    <string name="Json_error">Json error</string>
+    <string name="choose_town">Choose a town</string>
+    <string name="connection_error">Connection error</string>
+    <string name="rain">Precipitation</string>
+    <string name="sky_state">Sky state</string>
+    <string name="temperature">temperature</string>
+    <string name="wind_direction">wind direction</string>
+    <string name="wind_speed">wind speed</string>
+</resources>
