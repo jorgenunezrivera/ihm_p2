@@ -76,7 +76,7 @@ public class info_fragment extends Fragment {
         textview.setPadding(16,16,16,16);
         textview.setTextSize(14);
         textview.setLineSpacing(72,0);
-        textview.setText(texto);
+        textview.setText(getResources().getString(R.string.esperar));
         return textview;
     }
 

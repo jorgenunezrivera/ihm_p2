@@ -10,8 +10,8 @@
     <string name = "wind_speed">Velocidad del viento</string>
     <string name = "wind_direction">Dirección del viento</string>
 
-    <string name= "connection_error">Error de conexión</string>
-    <string name= "Json_error">Error de JSon</string>
+    <string name= "connection_error">Error de conexión, asegurate de tener conexion a internet</string>
+    <string name= "Json_error">Error,no se ha encontrado el pueblo, asegurate de que el nombre es correcto</string>
 
 
     <string name = "SUNNY">Soleado</string>
@@ -35,5 +35,6 @@
     <string name = "STORM_THEN_CLOUDY">Tormenta y luego nublado</string>
     <string name = "MELTED_SNOW">Aguanieve</string>
     <string name = "RAIN_HAIL">Granizo</string>
+    <string name="esperar">Por favor espere mientras se obtiene la informacion</string>
 
 </resources>

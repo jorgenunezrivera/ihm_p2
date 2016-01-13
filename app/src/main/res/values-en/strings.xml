@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">ihm_p2</string>
     <string name="CLOUDY">Cloudy</string>
-    <string name="Json_error">Json error</string>
+    <string name="Json_error">Error the selected town may not exist</string>
     <string name="choose_town">Choose a town</string>
-    <string name="connection_error">Connection error</string>
+    <string name="connection_error">Connection error, make sure you are connected to the internet</string>
     <string name="rain">Precipitation</string>
     <string name="sky_state">Sky state</string>
     <string name="temperature">temperature</string>
@@ -30,4 +30,5 @@
     <string name="SUNNY">Sunny</string>
     <string name="WEAK_RAIN">Weak rain</string>
     <string name="WEAK_SHOWERS">Weak showers</string>
+    <string name="esperar">Please wait while retrieving info</string>
 </resources>

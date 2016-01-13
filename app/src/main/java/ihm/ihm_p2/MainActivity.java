@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
     public void onFragmentInteraction(String nombre) {
         info_fragment infopueblo = new info_fragment();
         Bundle args = new Bundle();
-        args.putString("name",nombre);
+        args.putString("name", nombre);
         infopueblo.setArguments(args);
         new modelo().execute(nombre);
         if(tablet){
@@ -57,16 +57,17 @@ public class MainActivity extends Activity implements OnFragmentInteractionListe
 
             }
         }
-        else{
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frag_layout_phone, infopueblo);
-                transaction.addToBackStack(null);
-                transaction.commit();
-                TextView tv = (TextView) findViewById(R.id.toolbar_text);
-                tv.setText(nombre);
+        else {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frag_layout_phone, infopueblo);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            TextView tv = (TextView) findViewById(R.id.toolbar_text);
+            tv.setText(nombre);
             }
-
         }
+
+
 
     private class modelo extends AsyncTask<String,String,String> {
 

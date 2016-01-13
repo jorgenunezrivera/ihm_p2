@@ -2,8 +2,8 @@
 <resources>
     <string-array name="lista_pueblos">
         <item>A Guarda</item>
-        <item>A Pobra do Caramiñal</item>
         <item>Allariz</item>
+        <item>Atlantis</item>
         <item>Baiona</item>
         <item>Betanzos</item>
         <item>Cambados</item>
@@ -11,16 +11,13 @@
         <item>Cedeira</item>
         <item>Celanova</item>
         <item>Chantada</item>
-        <item>Corcubión</item>
         <item>Fisterra</item>
         <item>Foz</item>
         <item>Laxe</item>
         <item>Leiro</item>
         <item>Lugo</item>
-        <item>Miño</item>
         <item>Monforte</item>
         <item>Monterrei</item>
-        <item>Nigrán</item>
         <item>Padrón</item>
         <item>Parada de Sil</item>
         <item>Pobra de Trives</item>

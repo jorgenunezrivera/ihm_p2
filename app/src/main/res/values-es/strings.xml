@@ -2,9 +2,9 @@
 <resources>
     <string name="app_name">ihm_p2</string>
     <string name="CLOUDY">Nublado</string>
-    <string name="Json_error">Error de JSON</string>
+    <string name="Json_error">Error,no se ha encontrado el pueblo, asegurate de que el nombre es correcto </string>
     <string name="choose_town">Elije un pueblo</string>
-    <string name="connection_error">Error de conexion</string>
+    <string name="connection_error">Error de conexion, asegurate de estar conectado a internet</string>
     <string name="rain">Precipitaciones</string>
     <string name="sky_state">Cielo</string>
     <string name="temperature">Temperatura</string>
@@ -30,4 +30,5 @@
     <string name="SUNNY">Soleado</string>
     <string name="WEAK_RAIN">Lluvia suave</string>
     <string name="WEAK_SHOWERS">Chuvascos debiles</string>
+    <string name="esperar">Por favor espere mientras se obtiene la informacion</string>
 </resources>
