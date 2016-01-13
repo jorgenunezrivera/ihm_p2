@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 /**
@@ -76,7 +77,12 @@ public class List_Fragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //CAMBIAR ESTAS LINEAS D ESITIO???TABLET???
+        TextView tv = (TextView)getActivity().findViewById(R.id.toolbar_text);
+        if(tv != null)
+            tv.setText(R.string.choose_town);
         return inflater.inflate(R.layout.fragment_list_, container, false);
+
     }
 
     /*
